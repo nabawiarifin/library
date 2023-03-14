@@ -1,0 +1,43 @@
+:root{
+    --blue: #3A98B9;
+    --cream: #FFF1DC;
+    --brown: #E8D5C4;
+    --grey: #EEEEEE;
+}
+
+body{
+    font-size: 18px;
+    margin: 0px;
+}
+
+header{
+    background-color: var(--blue);
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.add-container{
+    width: 100vw;
+    height: 3rem;
+    background-color: var(--cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.library-container{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--brown);
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    background-color: var(--grey);
+}
