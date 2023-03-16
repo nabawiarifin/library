@@ -15,11 +15,49 @@
     </header>
 
     <div class="add-container">
-        <button type="button">+ Book</button>
+        <button id="add-book" type="button" onclick="openPopup()">+ Book</button>
     </div>
 
-    <div class="library-container"></div>
+    <div id="library-container">
+        <div class="card">
+            <div class="author">
+                <div>Author: J.R.R. Tolkien</div>
+            </div>
+
+            <div class="title">
+                <div>Title: The Hobbit</div>
+            </div>
+
+            <div class="pages">
+                <div>Pages: 225</div>
+            </div>
+
+            <div class="read">
+                <div>Read: </div>
+                <input type="checkbox">
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <form action="example.com/path" method="post">
+            <label for="author-input">Author</label>
+            <input type="text" id="author-input" name="author" required>  
+          
+            <label for="title-input">Card Number</label>
+            <input type="text" id="title-input" name="title" required>
+          
+            <label for="pages-read">Pages</label>
+            <input type="number" id="pages-read" name="pages" required>
+
+            <label for="read">Read</label>
+            <input type="checkbox" id="read" name="read" required>
+          
+          <button type="submit" onclick="addBookToLibrary()">Add</button>
+    </div>
     
+    <script src="./script.js"></script>
+
     <footer>Copyright 2020 Nabawi Arifin</footer>
 </body>
 </html>
