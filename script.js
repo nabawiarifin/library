@@ -1,7 +1,5 @@
 const container = document.getElementById('library-container')
 const popup = document.getElementById('popup')
-const addBook = document.getElementById('add-book')
-const submit = document.getElementById('submit')
 
 let myLibrary = [
     {"author": "nabawi",
@@ -16,23 +14,25 @@ let myLibrary = [
     }
 ]
 
-function Book(author, title, pages, read){
-    this.author = author
-    this.title = title
-    this.pages = pages
-    this.read = checked(read)
+class Book {
+    constructor(author, title, pages, read) {
+        this.author = author
+        this.title = title
+        this.pages = pages
+        this.read = checked(read)
+    }
 }
 
 container.innerHTML = showLibrary(myLibrary)
 
+addEventListener("submit", (e) => {
+    addBookToLibrary();
+    e.preventDefault();
+})
+
 function openPopup() {
     popup.classList.add("open-popup")
 }
-
-submit.addEventListener("click", function(event) {
-    addBookToLibrary();
-    event.preventDefault();
-})
 
 function addBookToLibrary() {
     const author = document.getElementById('author').value
@@ -56,9 +56,9 @@ function checked(checkbox){
 }
 
 function showLibrary(myLibrary) {
-    return myLibrary.map(myLibrary => `
-    <div class="card">
-        <button class="delete">X</button>
+    return myLibrary.map((myLibrary, index) => `
+    <div class="card" data-index="${index}">
+        <button class="remove" onclick="remove(this)">X</button>
         <div class="author">
             <div>${myLibrary.author}</div>
         </div>
@@ -76,6 +76,17 @@ function showLibrary(myLibrary) {
             <input type="checkbox" ${myLibrary.read}>
         </div>
     </div>`).join('') + "</div>";
-
 }
 
+function remove(e){
+    let index = e.parentNode.dataset.index //Get's data attribute from parent class
+    delete myLibrary[index]
+    container.innerHTML = showLibrary(myLibrary)
+}
+// for (i of remove) {
+//     (function(i) {
+//       i.addEventListener('click', function() {
+//         console.log(i);
+//       });
+//     })(i);
+//   }
